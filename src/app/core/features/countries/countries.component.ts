@@ -16,6 +16,7 @@ export class CountriesComponent implements OnInit {
   count: any[];
   mostFrequent: any[];
   value: any;
+  country: any;
 
   constructor(private manager: CountriesManagerService) {}
 
@@ -27,14 +28,13 @@ export class CountriesComponent implements OnInit {
   }
 
   getHighestNumberOfLanguages(data): void {
-    // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < data.length; i++) {
       const obj = data[i];
-      // tslint:disable-next-line:forin
       for (const key in obj) {
         const value = obj[key];
         if (value.length >= this.highestNumberOfLanguages) {
           this.highestNumberOfLanguages = value.length;
+          this.country = obj.country;
         }
       }
     }
@@ -51,10 +51,13 @@ export class CountriesComponent implements OnInit {
   getMostCommonLanguage(data): void {
     this.count = [];
     this.mostFrequent = [];
+    // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < data.length; i++) {
       const language = data[i].languages;
-      for (const key in language) {
-        this.value = { lang: language[key], times: 0 };
+      console.log(language);
+      // tslint:disable-next-line: forin
+      for (const item in language) {
+        this.value = { lang: language[item], times: 0 };
         if (this.count.includes(this.value.lang)) {
           this.value.times++;
           this.mostFrequent.push({
