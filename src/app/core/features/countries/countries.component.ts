@@ -6,29 +6,41 @@ import { CountriesManagerService } from './services/countries-manager.service';
   templateUrl: './countries.component.html'
 })
 export class CountriesComponent implements OnInit {
-
   updatedData = [];
   highestNumberOfLanguages = 0;
-  mostCommonLanguage = '';
+  mostCommonLanguage: any;
   numberOfCountries: number;
+  modeMap = {};
+  mostFreq = 0;
+  which = [];
+  count: any[];
+  mostFrequent: any[];
+  value: any;
 
-  constructor(private manager: CountriesManagerService) { }
+  constructor(private manager: CountriesManagerService) {}
 
   ngOnInit(): void {
-    this.doSecondExercise(this.manager.data);
+    this.numberOfCountries = this.manager.data.length;
+    this.getHighestNumberOfLanguages(this.manager.data);
+    this.whoSpeaksGerman(this.manager.data);
+    this.getMostCommonLanguage(this.manager.data);
   }
 
-  doSecondExercise(data): void {
-    this.numberOfCountries = data.length;
+  getHighestNumberOfLanguages(data): void {
+    // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < data.length; i++) {
       const obj = data[i];
+      // tslint:disable-next-line:forin
       for (const key in obj) {
         const value = obj[key];
-        if (value.length >= this.highestNumberOfLanguages){
-            this.highestNumberOfLanguages = value.length;
+        if (value.length >= this.highestNumberOfLanguages) {
+          this.highestNumberOfLanguages = value.length;
         }
       }
     }
+  }
+
+  whoSpeaksGerman(data): void {
     data.map(item => {
       if (item.languages.includes('de')) {
         this.updatedData.push(item);
@@ -36,4 +48,23 @@ export class CountriesComponent implements OnInit {
     });
   }
 
+  getMostCommonLanguage(data): void {
+    this.count = [];
+    this.mostFrequent = [];
+    // tslint:disable-next-line: prefer-for-of
+    for (let i = 0; i < data.length; i++) {
+      const language = data[i].languages;
+      // tslint:disable-next-line: forin
+      for (const key in language) {
+        this.value = { lang: language[key], times: 0 };
+        if (this.count.includes(this.value.lang)) {
+          this.value.times++;
+          this.mostFrequent.push({
+            value: this.value
+          });
+        }
+        this.count.push(this.value.lang);
+      }
+    }
+  }
 }

@@ -13,4 +13,8 @@
 
   <p> - to find the most common official language(s), of all countries.</p>
   <p class="answer">{{ mostCommonLanguage }} </p>
+  <ul *ngFor="let item of mostFrequent">
+    <li class="answer"> {{ item.value.lang }}</li>
+    <li>Repeated Times: {{ item.value.times }}</li>
+  </ul>
 </div>

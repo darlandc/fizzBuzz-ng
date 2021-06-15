@@ -3,6 +3,7 @@ import { VisualNutsRule } from './rules/visual-nuts-rule';
 import { FizzBuzzComponent } from './fizzz-buzz.component';
 import { TestBed } from '@angular/core/testing';
 import { NutsRule } from './rules/nuts-rule';
+import { RulesManagerService } from './services/rules-manager.service';
 
 describe('FizzBuzzComponent', () => {
   beforeEach(async () => {
@@ -13,7 +14,8 @@ describe('FizzBuzzComponent', () => {
       providers: [
         VisualNutsRule,
         NutsRule,
-        VisualRule
+        VisualRule,
+        RulesManagerService
       ]
     }).compileComponents();
   });
