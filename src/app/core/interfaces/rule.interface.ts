@@ -1,4 +1,4 @@
 export default interface RuleInterface {
-  matches(number: number): boolean;
+  matches(currentNumber: number): boolean;
   getReplacement(): string;
 }

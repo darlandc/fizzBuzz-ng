@@ -12,18 +12,16 @@ export class CountriesComponent implements OnInit {
   mostCommonLanguage = '';
   numberOfCountries: number;
 
-  constructor(private countries: CountriesManagerService) { }
+  constructor(private manager: CountriesManagerService) { }
 
   ngOnInit(): void {
-    this.doSecondExercise(this.countries.data);
+    this.doSecondExercise(this.manager.data);
   }
 
   doSecondExercise(data): void {
     this.numberOfCountries = data.length;
-    // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < data.length; i++) {
       const obj = data[i];
-      // tslint:disable-next-line:forin
       for (const key in obj) {
         const value = obj[key];
         if (value.length >= this.highestNumberOfLanguages){
@@ -36,9 +34,6 @@ export class CountriesComponent implements OnInit {
         this.updatedData.push(item);
       }
     });
-    console.log(data.length, '#1');
-    console.log(this.updatedData, '#2');
-    console.log(this.highestNumberOfLanguages, '#3');
   }
 
 }
