@@ -1,4 +1,4 @@
-import { CountriesManagerService } from './../../services/countries-manager.service';
+import { CountriesManagerService } from './services/countries-manager.service';
 import { CountriesComponent } from './countries.component';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 

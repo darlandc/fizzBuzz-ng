@@ -1,3 +1,5 @@
+import { CommonModule } from '@angular/common';
+import { CoreModule } from './core/core.module';
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 
@@ -7,6 +9,10 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
+      imports: [
+        CoreModule,
+        CommonModule
+      ]
     }).compileComponents();
   });
 

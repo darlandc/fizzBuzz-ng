@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CountriesManagerService } from '../../services/countries-manager.service';
+import { CountriesManagerService } from './services/countries-manager.service';
 
 @Component({
   selector: 'app-countries',
