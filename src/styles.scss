@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #282a36;
+  color: white;
+  line-height: 1.8rem;
+}
+h2, h5 {
+  color: #ff79c6;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+.answer {
+  color: #8be9fd;
+}
