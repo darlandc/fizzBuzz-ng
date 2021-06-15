@@ -51,11 +51,8 @@ export class CountriesComponent implements OnInit {
   getMostCommonLanguage(data): void {
     this.count = [];
     this.mostFrequent = [];
-    // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < data.length; i++) {
       const language = data[i].languages;
-      console.log(language);
-      // tslint:disable-next-line: forin
       for (const item in language) {
         this.value = { lang: language[item], times: 0 };
         if (this.count.includes(this.value.lang)) {
